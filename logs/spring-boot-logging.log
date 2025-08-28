@@ -1,0 +1,17 @@
+2025-08-28T00:03:01.363-05:00  INFO 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-2] dev.nerydlg.controller.LoginController   : Logging request: AuthRequest[username=nerydlg]
+2025-08-28T00:03:01.364-05:00 DEBUG 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-2] d.n.service.UserDetailsServiceImpl       : Looking for user with username nerydlg
+2025-08-28T00:03:01.368-05:00 DEBUG 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-2] d.n.service.UserDetailsServiceImpl       : Found user with username nerydlg
+2025-08-28T00:18:57.119-05:00  INFO 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-4] dev.nerydlg.controller.LoginController   : Logging request: AuthRequest[username=nerydlg]
+2025-08-28T00:18:57.120-05:00 DEBUG 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-4] d.n.service.UserDetailsServiceImpl       : Looking for user with username nerydlg
+2025-08-28T00:18:57.125-05:00 DEBUG 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-4] d.n.service.UserDetailsServiceImpl       : Found user with username nerydlg
+2025-08-28T00:31:21.341-05:00  INFO 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-6] dev.nerydlg.controller.LoginController   : Logging request: AuthRequest[username=nerydlg]
+2025-08-28T00:31:21.341-05:00 DEBUG 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-6] d.n.service.UserDetailsServiceImpl       : Looking for user with username nerydlg
+2025-08-28T00:31:21.347-05:00 DEBUG 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-6] d.n.service.UserDetailsServiceImpl       : Found user with username nerydlg
+2025-08-28T00:32:16.994-05:00  INFO 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-7] dev.nerydlg.controller.LoginController   : Logging request: AuthRequest[username=nerydlg]
+2025-08-28T00:32:16.994-05:00 DEBUG 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-7] d.n.service.UserDetailsServiceImpl       : Looking for user with username nerydlg
+2025-08-28T00:32:16.998-05:00 DEBUG 9835 --- [dev-nerydlg-service] [http-nio-8080-exec-7] d.n.service.UserDetailsServiceImpl       : Found user with username nerydlg
+2025-08-28T00:33:37.283-05:00  INFO 9835 --- [dev-nerydlg-service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-28T00:33:37.285-05:00  INFO 9835 --- [dev-nerydlg-service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-28T00:33:37.290-05:00  INFO 9835 --- [dev-nerydlg-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-28T00:33:37.292-05:00  INFO 9835 --- [dev-nerydlg-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-28T00:33:37.294-05:00  INFO 9835 --- [dev-nerydlg-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
