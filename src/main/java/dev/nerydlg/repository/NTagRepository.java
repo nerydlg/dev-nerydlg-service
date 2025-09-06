@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface NTagRepository extends JpaRepository<NTag, Long> {
     NTag save(NTag nTag);
+
     List<NTag> findByNameStartingWith(String name);
+
+    void deleteById(Long aLong);
 }
