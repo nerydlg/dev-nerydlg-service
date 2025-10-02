@@ -3,6 +3,7 @@ package dev.nerydlg.repository;
 import dev.nerydlg.entity.NBlog;
 import dev.nerydlg.entity.NBlogTags;
 import dev.nerydlg.entity.NTag;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

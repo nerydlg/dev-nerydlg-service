@@ -5,9 +5,10 @@ import dev.nerydlg.entity.NTag;
 import dev.nerydlg.mapper.TagMapper;
 import dev.nerydlg.repository.NTagRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -20,8 +21,9 @@ public class TagService {
         return getTag(saved);
     }
 
-    public List<Tag> findTags(String name){
-        return tagMapper.ListToTagList(nTagRepository.findByNameStartingWith(name));
+    public Page<Tag> findTags(String name, Pageable pageable){
+        return nTagRepository.findByNameStartingWith(pageable, name)
+                .map(this::getTag);
     }
 
     public void delete(Long id){
@@ -36,7 +38,8 @@ public class TagService {
         return tagMapper.tagToNTag(tag);
     }
 
-    public List<Tag> findAll() {
-        return tagMapper.ListToTagList(nTagRepository.findAll());
+    public Page<Tag> findAll(Pageable pageable) {
+        return nTagRepository.findAll(pageable)
+                .map(this::getTag);
     }
 }

@@ -5,6 +5,7 @@ import dev.nerydlg.entity.NTag;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -17,6 +18,4 @@ public interface TagMapper {
 
     @InheritInverseConfiguration
     NTag tagToNTag(Tag tag);
-
-    List<Tag> ListToTagList(List<NTag> nTags);
 }
