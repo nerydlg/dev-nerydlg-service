@@ -66,6 +66,7 @@ public class SecurityConfiguration {
                     httpSecurityCsrfConfigurer.disable();
                 })
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
+                    authorizationManagerRequestMatcherRegistry.requestMatchers("/api/v1/public/**").permitAll();
                     authorizationManagerRequestMatcherRegistry.requestMatchers("/api/v1/login").permitAll();
                     authorizationManagerRequestMatcherRegistry.anyRequest().authenticated();
                 })

@@ -22,7 +22,7 @@ public class TagService {
     }
 
     public Page<Tag> findTags(String name, Pageable pageable){
-        return nTagRepository.findByNameStartingWith(pageable, name)
+        return nTagRepository.findByNameStartingWithIgnoreCase(pageable, name)
                 .map(this::getTag);
     }
 

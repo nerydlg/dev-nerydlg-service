@@ -26,33 +26,30 @@ public class TagController {
 
     private final TagService tagService;
 
-    @GetMapping("/{name}")
-    public Page<Tag> findTags(@PathVariable String name) {
+    @GetMapping("/findTag")
+    public Page<Tag> findTags(@RequestParam(defaultValue = "") String name) {
         Pageable pageable = PageRequest.of(0, 30);
-        Page<Tag> tags = tagService.findTags(name, pageable);
-        return tags;
+        return tagService.findTags(name, pageable);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTag(@PathVariable Long id){
+    public void deleteTag(@PathVariable Long id) {
         tagService.delete(id);
     }
 
     @GetMapping("/")
-    public Page<Tag> findAllTags(@RequestParam(defaultValue = "0") int page,
-                                 @RequestParam(defaultValue = "10") int size) {
+    public Page<Tag> findAllTags(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<Tag> tags = tagService.findAll(pageable);
-        return tags;
+        return tagService.findAll(pageable);
     }
 
     @PostMapping("/save")
-    public Tag saveTag(@RequestBody Tag tag){
+    public Tag saveTag(@RequestBody Tag tag) {
         return tagService.saveOrUpdate(tag);
     }
 
     @PutMapping("/save")
-    public Tag updateTag(@RequestBody Tag tag){
+    public Tag updateTag(@RequestBody Tag tag) {
         return tagService.saveOrUpdate(tag);
     }
 }

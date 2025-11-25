@@ -1,10 +1,15 @@
 package dev.nerydlg.service;
 
 import dev.nerydlg.dto.BlogPost;
+import dev.nerydlg.dto.Tag;
 import dev.nerydlg.entity.NBlog;
+import dev.nerydlg.entity.NBlogTags;
+import dev.nerydlg.entity.NTag;
 import dev.nerydlg.entity.NUser;
 import dev.nerydlg.mapper.BlogMapper;
+import dev.nerydlg.mapper.TagMapper;
 import dev.nerydlg.repository.NBlogRepository;
+import dev.nerydlg.repository.NBlogTagsRepository;
 import dev.nerydlg.repository.NUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,15 +23,31 @@ public class BlogService {
     private final BlogMapper blogMapper;
     private final NBlogRepository nBlogRepository;
     private final NUserRepository nUserRepository;
-
+    private final NBlogTagsRepository nBlogTagsRepository;
+    private final TagMapper tagMapper;
 
     public BlogPost saveBlogPost(BlogPost blogPost) {
         NUser user = nUserRepository.findByUsername(blogPost.author());
         NBlog blog = getNBlog(blogPost);
         blog.setUser(user);
         blog.setDomain(user.getDomain());
-        NBlog saved = nBlogRepository.save(blog);
-        return getBlogPost(saved);
+        NBlog savedBlog = nBlogRepository.save(blog);
+
+        if(blogPost.tags() != null && !blogPost.tags().isEmpty()) {
+            saveBlogPost(savedBlog, blogPost.tags());
+        }
+
+        return getBlogPost(savedBlog);
+    }
+
+    private void saveBlogPost(NBlog savedBlog, List<Tag> tags) {
+        for (Tag tag : tags) {
+            NTag ntag = tagMapper.tagToNTag(tag);
+            NBlogTags blogTags = new NBlogTags();
+            blogTags.setBlog(savedBlog);
+            blogTags.setTag(ntag);
+            nBlogTagsRepository.save(blogTags);
+        }
     }
 
     public List<BlogPost> findAll(String hostHeader, String lang) {
