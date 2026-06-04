@@ -18,11 +18,10 @@ public class PublicService {
 
     private final NBlogRepository nBlogRepository;
     private final BlogMapper blogMapper;
-    private final Integer MAX_LATEST_POSTS = 5;
 
-    public List<BlogPost> getMostRecentPosts(String lang, String hostHeader) {
-        Pageable pageable = PageRequest.of(0, MAX_LATEST_POSTS);
-        List<NBlog> posts = nBlogRepository.findTopPublishedByDomainNameAndLang(hostHeader, lang, MAX_LATEST_POSTS, pageable);
+    public List<BlogPost> getMostRecentPosts(String lang, String hostHeader, Integer pageNum, Integer size) {
+        Pageable pageable = PageRequest.of(pageNum, size);
+        List<NBlog> posts = nBlogRepository.findTopPublishedByDomainNameAndLang(hostHeader, lang, pageable);
         return blogMapper.ListToBlogPostList(posts);
     }
 

@@ -5,6 +5,7 @@ import dev.nerydlg.entity.NBlog;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 import java.sql.Timestamp;
@@ -21,6 +22,10 @@ public interface BlogMapper {
     BlogPost nBlogToBlogPost(dev.nerydlg.entity.NBlog nBlog);
 
     @InheritInverseConfiguration(name = "nBlogToBlogPost")
+    @Mappings({
+            @Mapping(target = "blogTags", ignore = true),
+            @Mapping(target = "tags", ignore = true)
+    })
     NBlog blogPostToNBlog(BlogPost blogPost);
 
     List<BlogPost> ListToBlogPostList(List<NBlog> nBlogs);

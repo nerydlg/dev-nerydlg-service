@@ -15,7 +15,7 @@ public interface NBlogRepository extends JpaRepository<NBlog, Long> {
     List<NBlog> findByDomain_NameAndLangCode(String domainName, String langCode);
     NBlog findByTitle(String title);
     @Query("SELECT b FROM NBlog b WHERE b.domain.name = :domainName AND LOWER(b.langCode) = LOWER(:langCode) AND b.publicationDate < CURRENT_TIMESTAMP ORDER BY b.publicationDate DESC")
-    List<NBlog> findTopPublishedByDomainNameAndLang(String domainName, String langCode, Integer limit, Pageable pageable);
+    List<NBlog> findTopPublishedByDomainNameAndLang(String domainName, String langCode, Pageable pageable);
 
     // NBlog findById(Long id);
 }

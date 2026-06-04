@@ -7,6 +7,7 @@ import java.util.List;
 public record BlogPost(String title,
                        String content,
                        String author,
+                       String summary,
                        String lang,
                        LocalDateTime publicationDate,
                        LocalDateTime updatedAt,

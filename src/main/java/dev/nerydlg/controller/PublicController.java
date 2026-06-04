@@ -20,8 +20,10 @@ public class PublicController {
 
     @GetMapping("/latestPost/{lang}")
     public List<BlogPost> getLatestPost(@PathVariable String lang,
-                                        @RequestParam String site)  {
-        return publicService.getMostRecentPosts(lang, site);
+                                        @RequestParam String site,
+                                        @RequestParam Integer page,
+                                        @RequestParam Integer size)  {
+        return publicService.getMostRecentPosts(lang, site, page, size);
     }
 
     @GetMapping("/blog/{title}")

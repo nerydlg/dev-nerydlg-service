@@ -63,10 +63,13 @@ CREATE TABLE n_blog_tags(
 -- DROP TABLE n_comment
 DROP TABLE IF EXISTS n_comment;
 -- CRATE TABLE n_comment
-CREATE TABLE n_comment(
+CREATE TABLE IF NOT EXISTS n_comment(
     id SERIAL PRIMARY KEY,
     blog_id INTEGER REFERENCES n_blog(id),
     author VARCHAR(120) NOT NULL,
     content TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL default now()
 );
+
+-- ADD Column to n_blog for summary after title
+ALTER TABLE n_blog ADD COLUMN summary TEXT;
