@@ -35,7 +35,9 @@ public class SecurityConfiguration {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of(
-                "http://localhost:3000"     // React default port
+                "https://nerydlg.dev",     // PROD
+                "https://www.nerydlg.dev", // PROD
+                "http://localhost:8080" // development
         ));
         configuration.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"
