@@ -14,8 +14,13 @@ import java.util.function.Function;
 
 public class JwtService {
 
-    public static final String SECRET = "TW9sYS1BcHBhLUZpb25hLVNvbl9MYXNfTWVqb3Jlcwo=";
     private static final long MAX_SESSION_TIME = 60 * 60 * 1000;
+
+    private final String secret;
+
+    public JwtService(String secret) {
+        this.secret = secret;
+    }
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -65,7 +70,7 @@ public class JwtService {
     }
 
     private Key getSigningKey() {
-        byte[] bytes = Base64.getDecoder().decode(SECRET);
+        byte[] bytes = Base64.getDecoder().decode(secret);
         return Keys.hmacShaKeyFor(bytes);
     }
 }

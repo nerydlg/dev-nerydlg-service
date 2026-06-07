@@ -1,0 +1,11 @@
+target/
+logs/
+.git/
+.gitignore
+.gitattributes
+.idea/
+*.iml
+.mvn/wrapper/maven-wrapper.jar.lck
+HELP.md
+*.md
+.claude/
