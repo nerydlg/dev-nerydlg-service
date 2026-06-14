@@ -1,10 +1,14 @@
 package dev.nerydlg.controller;
 
 import dev.nerydlg.dto.BlogPost;
+import dev.nerydlg.dto.Contact;
+import dev.nerydlg.dto.PublicResponse;
 import dev.nerydlg.service.PublicService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +35,9 @@ public class PublicController {
         return publicService.getPostByTitle(title);
     }
 
-
+    @PostMapping("/contact")
+    public PublicResponse saveContact(@RequestBody Contact contact) {
+        return publicService.saveContact(contact);
+    }
 
 }
