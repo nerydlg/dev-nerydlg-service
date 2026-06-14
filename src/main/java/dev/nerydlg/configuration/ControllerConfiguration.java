@@ -1,9 +1,11 @@
 package dev.nerydlg.configuration;
 
 import dev.nerydlg.controller.BlogPostController;
+import dev.nerydlg.controller.ContactController;
 import dev.nerydlg.controller.PublicController;
 import dev.nerydlg.controller.TagController;
 import dev.nerydlg.service.BlogService;
+import dev.nerydlg.service.ContactService;
 import dev.nerydlg.service.PublicService;
 import dev.nerydlg.service.TagService;
 import org.springframework.context.annotation.Bean;
@@ -29,5 +31,10 @@ public class ControllerConfiguration {
     @Bean
     public TagController tagController(TagService tagService) {
         return new TagController(tagService);
+    }
+
+    @Bean
+    public ContactController contactController(ContactService contactService) {
+        return new ContactController(contactService);
     }
 }

@@ -71,5 +71,19 @@ CREATE TABLE IF NOT EXISTS n_comment(
     created_at TIMESTAMP NOT NULL default now()
 );
 
+-- DROP TABLE IF EXISTS n_contact;
+DROP TABLE IF EXISTS n_contact;
+
+CREATE TABLE IF NOT EXISTS n_contact(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(120) NOT NULL,
+    email VARCHAR(120) NOT NULL,
+    comment TEXT NOT NULL,
+    status INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP NOT NULL default now(),
+    updated_at TIMESTAMP NOT NULL default now(),
+    domain_id INTEGER REFERENCES n_domain(id)
+);
+
 -- ADD Column to n_blog for summary after title
 ALTER TABLE n_blog ADD COLUMN summary TEXT;

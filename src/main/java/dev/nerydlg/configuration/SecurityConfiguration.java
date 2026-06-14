@@ -37,7 +37,7 @@ public class SecurityConfiguration {
         configuration.setAllowedOrigins(List.of(
                 "https://nerydlg.dev",     // PROD
                 "https://www.nerydlg.dev", // PROD
-                "http://localhost:8080" // development
+                "http://localhost:3000" // development
         ));
         configuration.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"
@@ -71,6 +71,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
                     authorizationManagerRequestMatcherRegistry.requestMatchers("/api/v1/public/**").permitAll();
                     authorizationManagerRequestMatcherRegistry.requestMatchers("/api/v1/login").permitAll();
+                    authorizationManagerRequestMatcherRegistry.requestMatchers("/error").permitAll();
                     authorizationManagerRequestMatcherRegistry.anyRequest().authenticated();
                 })
                 .sessionManagement(sessionManagement -> {

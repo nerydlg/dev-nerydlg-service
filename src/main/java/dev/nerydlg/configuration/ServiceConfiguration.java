@@ -1,9 +1,11 @@
 package dev.nerydlg.configuration;
 
 import dev.nerydlg.mapper.BlogMapper;
+import dev.nerydlg.mapper.ContactMapper;
 import dev.nerydlg.mapper.TagMapper;
 import dev.nerydlg.repository.NBlogRepository;
 import dev.nerydlg.repository.NBlogTagsRepository;
+import dev.nerydlg.repository.NContactRepository;
 import dev.nerydlg.repository.NDomainRepository;
 import dev.nerydlg.repository.NTagRepository;
 import dev.nerydlg.repository.NUserRepository;
@@ -33,7 +35,11 @@ public class ServiceConfiguration {
    }
 
    @Bean
-   public PublicService publicService(NBlogRepository nBlogRepository, BlogMapper blogMapper) {
-       return new PublicService(nBlogRepository, blogMapper);
+   public PublicService publicService(NBlogRepository nBlogRepository,
+                                      BlogMapper blogMapper,
+                                      NContactRepository nContactRepository,
+                                      ContactMapper contactMapper,
+                                      NDomainRepository domainRepository) {
+       return new PublicService(nBlogRepository, blogMapper, nContactRepository, contactMapper, domainRepository);
    }
 }
