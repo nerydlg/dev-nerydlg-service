@@ -12,9 +12,12 @@ import dev.nerydlg.repository.NBlogRepository;
 import dev.nerydlg.repository.NBlogTagsRepository;
 import dev.nerydlg.repository.NUserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -50,12 +53,17 @@ public class BlogService {
         }
     }
 
-    public List<BlogPost> findAll(String hostHeader, String lang) {
+    public Page<BlogPost> findAll(Pageable pageable, String hostHeader, String lang) {
         String domain = hostHeader.contains(":") ?
                 hostHeader.substring(0, hostHeader.indexOf(":"))
                 : hostHeader;
-
-        return blogMapper.ListToBlogPostList(nBlogRepository.findByDomain_NameAndLangCode(domain, lang));
+        if(lang == null) {
+            return nBlogRepository.findByDomain_Name(pageable, domain)
+                .map(this::getBlogPost);
+        } else {
+            return nBlogRepository.findByDomain_NameAndLangCode(pageable, domain, lang)
+                .map(this::getBlogPost);
+        }
     }
 
     public BlogPost getBlogPost(NBlog nBlog) {
@@ -64,5 +72,17 @@ public class BlogService {
 
     public NBlog getNBlog(BlogPost blogPost) {
         return blogMapper.blogPostToNBlog(blogPost);
+    }
+
+  public void deleteBlogPost(Long id) {
+    nBlogRepository.deleteById(id);
+  }
+
+    public BlogPost getBlogPostById(Long id) {
+        Optional<NBlog> byId = nBlogRepository.findById(id);
+        if(byId.isPresent()) {
+            return blogMapper.nBlogToBlogPost(byId.get());
+        }
+        return null;
     }
 }

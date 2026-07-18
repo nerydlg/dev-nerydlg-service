@@ -43,13 +43,10 @@ public class TagController {
         return tagService.findAll(pageable);
     }
 
+    @PutMapping("/update")
     @PostMapping("/save")
-    public Tag saveTag(@RequestBody Tag tag) {
+    public Tag saveOrUpdateTag(@RequestBody Tag tag) {
         return tagService.saveOrUpdate(tag);
     }
 
-    @PutMapping("/save")
-    public Tag updateTag(@RequestBody Tag tag) {
-        return tagService.saveOrUpdate(tag);
-    }
 }
