@@ -4,10 +4,12 @@ import dev.nerydlg.controller.BlogPostController;
 import dev.nerydlg.controller.ContactController;
 import dev.nerydlg.controller.PublicController;
 import dev.nerydlg.controller.TagController;
+import dev.nerydlg.controller.UserController;
 import dev.nerydlg.service.BlogService;
 import dev.nerydlg.service.ContactService;
 import dev.nerydlg.service.PublicService;
 import dev.nerydlg.service.TagService;
+import dev.nerydlg.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
@@ -36,5 +38,10 @@ public class ControllerConfiguration {
     @Bean
     public ContactController contactController(ContactService contactService) {
         return new ContactController(contactService);
+    }
+
+    @Bean
+    public UserController userController(UserService userService) {
+        return new UserController(userService);
     }
 }

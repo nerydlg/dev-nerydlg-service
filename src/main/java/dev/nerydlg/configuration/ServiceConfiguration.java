@@ -3,6 +3,7 @@ package dev.nerydlg.configuration;
 import dev.nerydlg.mapper.BlogMapper;
 import dev.nerydlg.mapper.ContactMapper;
 import dev.nerydlg.mapper.TagMapper;
+import dev.nerydlg.mapper.UserMapper;
 import dev.nerydlg.repository.NBlogRepository;
 import dev.nerydlg.repository.NBlogTagsRepository;
 import dev.nerydlg.repository.NContactRepository;
@@ -13,6 +14,7 @@ import dev.nerydlg.service.BlogService;
 import dev.nerydlg.service.DomainService;
 import dev.nerydlg.service.PublicService;
 import dev.nerydlg.service.TagService;
+import dev.nerydlg.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -41,5 +43,10 @@ public class ServiceConfiguration {
                                       ContactMapper contactMapper,
                                       NDomainRepository domainRepository) {
        return new PublicService(nBlogRepository, blogMapper, nContactRepository, contactMapper, domainRepository);
+   }
+
+   @Bean
+   public UserService userService(UserMapper userMapper, NUserRepository  nUserRepository) {
+     return new UserService(nUserRepository, userMapper);
    }
 }
